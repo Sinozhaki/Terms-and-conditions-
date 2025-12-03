@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sewa Linkedin By Zen</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- Reset Dasar --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* --- Styling Body --- */
+        body {
+            background-color: #000000; 
+            color: #ffffff;
+            font-family: 'Nunito', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+            padding-top: 40px; 
+            min-height: 100vh;
+            overflow-x: hidden; 
+            position: relative; 
+        }
+
+        /* --- Background Animation --- */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; 
+            overflow: hidden;
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px); 
+            opacity: 0.6; 
+            animation: move-blob 20s infinite alternate;
+        }
+
+        .blob-1 { top: -10%; left: -10%; width: 500px; height: 500px; background: #0a66c2; animation-duration: 25s; }
+        .blob-2 { bottom: -10%; right: -10%; width: 400px; height: 400px; background: #5b21b6; animation-duration: 30s; animation-direction: alternate-reverse; }
+        .blob-3 { top: 40%; left: 30%; width: 300px; height: 300px; background: #004182; opacity: 0.4; animation-duration: 35s; }
+
+        @keyframes move-blob {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(0, 0) scale(1); }
+        }
+
+        /* --- Layout Container --- */
+        .container {
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+            padding: 0 20px; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 1; 
+            flex: 1; /* Mendorong footer ke bawah */
+            margin-bottom: 60px;
+        }
+
+        /* --- Hero Visual Animation --- */
+        .hero-visual {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 20px;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* --- Typography --- */
+        h1 {
+            font-size: 2.2rem; 
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+            line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5); 
+        }
+
+        .highlight-blue {
+            color: #0a66c2; 
+            text-shadow: 0 0 15px rgba(10, 102, 194, 0.4); 
+        }
+
+        p.subtitle {
+            font-size: 1rem;
+            color: #d1d5db; 
+            line-height: 1.5;
+            margin-bottom: 25px;
+            font-weight: 400;
+            padding: 0 10px;
+            text-shadow: 0 1px 5px rgba(0,0,0,0.8); 
+        }
+
+        .separator {
+            border: 0;
+            height: 1px;
+            width: 100%;
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0), #0a66c2, rgba(0, 0, 0, 0));
+            margin-bottom: 30px; 
+        }
+
+        /* --- WhatsApp Button --- */
+        @keyframes breathing-green {
+            0% { box-shadow: 0 4px 10px rgba(37, 211, 102, 0.2); }
+            50% { box-shadow: 0 4px 25px rgba(37, 211, 102, 0.6); }
+            100% { box-shadow: 0 4px 10px rgba(37, 211, 102, 0.2); }
+        }
+
+        .wa-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #25D366; 
+            color: white;
+            text-decoration: none;
+            padding: 12px 28px; 
+            border-radius: 50px; 
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            animation: breathing-green 2s ease-in-out infinite;
+            backdrop-filter: blur(5px); 
+        }
+
+        .wa-button svg {
+            width: 22px;
+            height: 22px;
+            margin-right: 8px;
+            fill: currentColor; 
+        }
+
+        .wa-button:hover {
+            background-color: #1da851; 
+            transform: translateY(-2px); 
+            animation: none;
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.8);
+        }
+
+        .glowing-alert {
+            margin-top: 15px;
+            font-size: 0.85rem; 
+            font-weight: 600;
+            color: #ffffff;
+            text-align: center;
+            text-shadow: 0 0 5px #0a66c2, 0 0 10px #0a66c2;
+            letter-spacing: 0.3px;
+            margin-bottom: 40px; 
+        }
+
+        /* --- Cards & Sections --- */
+        .info-section {
+            width: 100%;
+            text-align: left;
+            margin-bottom: 35px; 
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #0a66c2; 
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(10, 102, 194, 0.3);
+        }
+
+        .card {
+            background: rgba(30, 30, 30, 0.7); 
+            backdrop-filter: blur(10px); 
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08); 
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            transition: transform 0.2s ease, border-color 0.3s;
+        }
+
+        .card:hover {
+            border-color: #0a66c2; 
+            transform: scale(1.02); 
+        }
+
+        .card-icon {
+            width: 28px;
+            height: 28px;
+            fill: #0a66c2;
+            margin-right: 15px;
+            flex-shrink: 0; 
+            filter: drop-shadow(0 0 5px rgba(10, 102, 194, 0.5)); 
+        }
+
+        .card-text {
+            font-size: 0.95rem;
+            line-height: 1.4;
+            color: #e0e0e0;
+            font-weight: 400;
+        }
+
+        .special-card {
+            background: linear-gradient(145deg, rgba(10, 102, 194, 0.15), rgba(0, 0, 0, 0.6));
+            border: 1px solid #0a66c2; 
+            box-shadow: 0 4px 15px rgba(10, 102, 194, 0.15);
+        }
+
+        .special-card .card-text {
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        /* --- Mockup Visuals --- */
+        .card.visual-card {
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 0; 
+            overflow: hidden;
+        }
+
+        .mockup-container {
+            width: 100%;
+            background: #121212; 
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .visual-card .card-text {
+            padding: 15px; 
+        }
+
+        .mockup-svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* --- Referral Table --- */
+        .referral-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(30, 30, 30, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        .referral-table thead {
+            background: rgba(10, 102, 194, 0.2);
+        }
+
+        .referral-table th, .referral-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.95rem;
+        }
+
+        .referral-table th {
+            color: #4bb8ff;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+
+        .referral-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .amount-col {
+            text-align: right;
+            font-weight: 700;
+            color: #25D366; 
+        }
+        
+        .rate-high {
+            color: #FFD700; 
+        }
+
+        /* --- Footer --- */
+        .site-footer {
+            width: 100%;
+            background-color: #050505; 
+            border-top: 1px solid #1a1a1a;
+            padding: 30px 20px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: auto; 
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-logo {
+            font-weight: 800;
+            color: #fff;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+            display: inline-block;
+        }
+
+        .footer-logo span {
+            color: #0a66c2;
+        }
+
+        .copyright {
+            font-size: 0.75rem;
+            opacity: 0.6;
+            margin-top: 10px;
+        }
+
+        /* --- Mobile Responsive Tweaks --- */
+        @media (max-width: 480px) {
+            h1 { font-size: 1.8rem; }
+            p.subtitle { font-size: 0.9rem; }
+            .wa-button { width: 100%; }
+            .glowing-alert { font-size: 0.70rem; white-space: nowrap; }
+            .card { padding: 12px; }
+            .visual-card .card-text { padding: 15px; }
+            .card-text { font-size: 0.85rem; }
+            .referral-table th, .referral-table td { padding: 10px 12px; font-size: 0.9rem; }
+            .hero-visual { width: 120px; height: 120px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-animation">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div class="container">
+        
+        <svg class="hero-visual" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="heroGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#0a66c2;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#5b21b6;stop-opacity:1" />
+                </linearGradient>
+                <filter id="glow">
+                    <feGaussianBlur stdDeviation="5" result="coloredBlur"/>
+                    <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+            </defs>
+            <circle cx="100" cy="100" r="50" fill="none" stroke="url(#heroGrad)" stroke-width="2" opacity="0.5" />
+            <circle cx="100" cy="100" r="40" fill="none" stroke="url(#heroGrad)" stroke-width="1.5" stroke-dasharray="5,5" />
+            <circle cx="100" cy="100" r="20" fill="url(#heroGrad)" filter="url(#glow)" />
+            
+            <circle cx="100" cy="30" r="6" fill="#25D366" filter="url(#glow)" /> 
+            <line x1="100" y1="36" x2="100" y2="80" stroke="#25D366" stroke-width="1" opacity="0.4" />
+            
+            <circle cx="160" cy="130" r="6" fill="#00c4cc" filter="url(#glow)" />
+            <line x1="155" y1="127" x2="118" y2="108" stroke="#00c4cc" stroke-width="1" opacity="0.4" />
+            
+            <circle cx="40" cy="130" r="6" fill="#e50914" filter="url(#glow)" />
+            <line x1="45" y1="127" x2="82" y2="108" stroke="#e50914" stroke-width="1" opacity="0.4" />
+        </svg>
+
+        <h1>Sewa Linkedin <span class="highlight-blue">By Zen</span></h1>
+        
+        <p class="subtitle">
+            Dapatkan pasif income mingguan $12, hanya dengan menyewakan akun Linkedinmu.
+        </p>
+
+        <hr class="separator">
+
+        <a href="https://wa.me/6289513304878" target="_blank" class="wa-button">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.53L5.08 16.24C4.31 14.92 3.91 13.42 3.91 11.91C3.91 7.38 7.61 3.67 12.05 3.67M8.53 7.33C8.37 7.33 8.1 7.39 7.87 7.64C7.65 7.89 7.02 8.48 7.02 9.69C7.02 10.9 7.9 12.08 8.03 12.25C8.15 12.41 9.73 14.85 12.15 15.9C12.73 16.15 13.18 16.29 13.53 16.41C14.13 16.6 14.69 16.57 15.14 16.5C15.64 16.42 16.68 15.87 16.9 15.25C17.11 14.64 17.11 14.12 17.05 14C16.98 13.9 16.83 13.83 16.58 13.71C16.33 13.59 15.12 13 14.9 12.9C14.67 12.81 14.5 12.76 14.33 13C14.17 13.25 13.68 13.83 13.53 14C13.39 14.18 13.23 14.21 12.98 14.08C12.73 13.96 11.93 13.7 10.98 12.85C10.24 12.2 9.75 11.39 9.6 11.14C9.47 10.89 9.6 10.75 9.72 10.63C9.83 10.52 9.98 10.34 10.1 10.2C10.23 10.06 10.27 9.96 10.35 9.79C10.43 9.63 10.39 9.48 10.33 9.36C10.27 9.23 9.82 8.13 9.63 7.68C9.45 7.24 9.26 7.3 9.12 7.3C9 7.3 8.83 7.3 8.66 7.3C8.63 7.33 8.58 7.33 8.53 7.33Z" />
+            </svg>
+            WhatsApp Admin
+        </a>
+
+        <p class="glowing-alert">
+            Bisa DP $1 setelah bule log in ( Kuota Terbatas )
+        </p>
+
+        <div class="info-section">
+            <h2 class="section-title">Buat apa sih akunya?</h2>
+
+            <div class="card visual-card">
+                <div class="mockup-container">
+                    <svg class="mockup-svg" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="0" y="0" width="400" height="70" fill="url(#bannerGrad)" />
+                        <linearGradient id="bannerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#0a66c2;stop-opacity:0.4" />
+                            <stop offset="100%" style="stop-color:#004182;stop-opacity:0.6" />
+                        </linearGradient>
+                        <circle cx="65" cy="70" r="40" fill="#1a1a1a" stroke="#000000" stroke-width="3"/>
+                        <path d="M65,45 C59,45 55,50 55,55 C55,60 59,65 65,65 C71,65 75,60 75,55 C75,50 71,45 65,45 Z M45,85 C45,75 55,70 65,70 C75,70 85,75 85,85" fill="#555" />
+                        <text x="115" y="80" font-family="Nunito, sans-serif" font-weight="800" font-size="16" fill="#ffffff">John Doe (Samaran)</text>
+                        <text x="115" y="100" font-family="Nunito, sans-serif" font-weight="400" font-size="12" fill="#b0b0b0">Digital Marketing Specialist</text>
+                        <text x="115" y="118" font-family="Nunito, sans-serif" font-weight="400" font-size="10" fill="#888888">Jakarta Raya • 500+ koneksi</text>
+                        <rect x="115" y="135" width="85" height="26" rx="13" fill="#0a66c2"/>
+                        <text x="157.5" y="152" font-family="Nunito, sans-serif" font-weight="700" font-size="11" fill="#ffffff" text-anchor="middle">Connect</text>
+                        <rect x="210" y="135" width="85" height="26" rx="13" fill="none" stroke="#0a66c2" stroke-width="1.5"/>
+                        <text x="252.5" y="152" font-family="Nunito, sans-serif" font-weight="700" font-size="11" fill="#0a66c2" text-anchor="middle">Message</text>
+                    </svg>
+                </div>
+                <div class="card-text">
+                    <strong>Untuk Membangun Profil Profesional.</strong><br>
+                    Penyewa akan melengkapi profil agar terlihat profesional dan terpercaya.
+                </div>
+            </div>
+
+            <div class="card visual-card">
+                <div class="mockup-container">
+                    <svg class="mockup-svg" viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="30" cy="30" r="18" fill="#333"/>
+                        <text x="58" y="22" font-family="Nunito, sans-serif" font-weight="800" font-size="13" fill="#ffffff">Zen Agency</text>
+                        <text x="58" y="36" font-family="Nunito, sans-serif" font-weight="400" font-size="10" fill="#b0b0b0">Premium Digital Services</text>
+                        <text x="58" y="48" font-family="Nunito, sans-serif" font-weight="400" font-size="9" fill="#888">2h • 🌐</text>
+                        <rect x="310" y="18" width="70" height="22" rx="4" fill="none" stroke="#0a66c2" stroke-width="1"/>
+                        <text x="345" y="33" font-family="Nunito, sans-serif" font-weight="700" font-size="11" fill="#0a66c2" text-anchor="middle">+ Follow</text>
+
+                        <text x="20" y="75" font-family="Nunito, sans-serif" font-weight="400" font-size="12" fill="#e0e0e0">Unlock your creative potential with our premium tools! 🚀</text>
+                        <text x="20" y="92" font-family="Nunito, sans-serif" font-weight="400" font-size="12" fill="#0a66c2">#CanvaPro #NetflixUHD #DigitalTools</text>
+
+                        <g transform="translate(20, 105)">
+                            <rect x="0" y="0" width="360" height="130" fill="#111" />
+                            <path d="M0,0 L180,0 L180,130 L0,130 Z" fill="#00c4cc" opacity="0.8"/>
+                            <path d="M180,0 L360,0 L360,130 L180,130 Z" fill="#b20710" opacity="0.8"/>
+                            <text x="90" y="60" font-family="Nunito, sans-serif" font-weight="900" font-size="18" fill="white" text-anchor="middle" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);">CANVA</text>
+                            <text x="270" y="60" font-family="Nunito, sans-serif" font-weight="900" font-size="18" fill="white" text-anchor="middle" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);">NETFLIX</text>
+                            
+                            <rect x="130" y="90" width="100" height="24" rx="12" fill="white"/>
+                            <text x="180" y="106" font-family="Nunito, sans-serif" font-weight="800" font-size="10" fill="#333" text-anchor="middle">SHOP NOW</text>
+
+                            <rect x="0" y="130" width="360" height="35" fill="#252525"/>
+                            <text x="12" y="145" font-family="Nunito, sans-serif" font-weight="600" font-size="11" fill="#e0e0e0">Get Premium Access Today</text>
+                            <text x="12" y="158" font-family="Nunito, sans-serif" font-weight="400" font-size="9" fill="#888">zenagency.com • Service</text>
+                            <rect x="320" y="138" width="30" height="20" rx="4" fill="none" stroke="#555"/>
+                            <text x="335" y="151" font-family="Nunito, sans-serif" font-size="9" fill="#888" text-anchor="middle">Go</text>
+                        </g>
+
+                        <g transform="translate(20, 285)">
+                            <circle cx="6" cy="6" r="6" fill="#0a66c2" stroke="#121212"/>
+                            <path d="M4,7 L5.5,8.5 L8,4" stroke="white" stroke-width="1.5" fill="none"/>
+                            <circle cx="14" cy="6" r="6" fill="#df704d" stroke="#121212"/>
+                            <path d="M14,8 C12,10 11,8 14,5 C17,8 16,10 14,8" fill="white"/>
+                            <text x="26" y="9" font-family="Nunito, sans-serif" font-size="10" fill="#888">248 • 32 comments</text>
+                        </g>
+
+                        <line x1="20" y1="300" x2="380" y2="300" stroke="#333"/>
+                        <g transform="translate(35, 315)" fill="#888">
+                            <text x="0" y="0" font-family="Nunito, sans-serif" font-weight="600" font-size="11" text-anchor="middle">Like</text>
+                            <text x="90" y="0" font-family="Nunito, sans-serif" font-weight="600" font-size="11" text-anchor="middle">Comment</text>
+                            <text x="190" y="0" font-family="Nunito, sans-serif" font-weight="600" font-size="11" text-anchor="middle">Repost</text>
+                            <text x="280" y="0" font-family="Nunito, sans-serif" font-weight="600" font-size="11" text-anchor="middle">Send</text>
+                        </g>
+                    </svg>
+                </div>
+                <div class="card-text">
+                    <strong>Untuk Promosi Produk Digital.</strong><br>
+                    Akun digunakan untuk memposting penawaran produk seperti Canva Pro & Netflix.
+                </div>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h2 class="section-title">Gimana cara mulainya?</h2>
+            <div class="card">
+                <svg class="card-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M2.81,14.12L5.64,11.29L8.17,10.79C11.39,6.41 17.55,4.22 19.78,4.22C19.78,6.45 17.59,12.61 13.21,15.83L12.71,18.36L9.88,21.19L9.17,17.66C7.76,17.66 7.76,17.66 7.05,16.95C6.34,16.24 6.34,16.24 6.34,14.83L2.81,14.12M5.64,16.95L7.05,18.36L4.39,21.02L2.97,19.61L5.64,16.95M4.22,15.54L5.46,15.71L3,18.16L2.28,17.44L4.22,15.54M16.95,9.17A2,2 0 0,0 14.95,7.17A2,2 0 0,0 12.95,9.17A2,2 0 0,0 14.95,11.17A2,2 0 0,0 16.95,9.17Z" />
+                </svg>
+                <div class="card-text">
+                    Pada jam <strong>9 malam</strong> akan di announce form start sewa. Kalian cukup isi form tersebut dengan benar, dan pesan otomatis akan terkirim ke target (bule).
+                </div>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h2 class="section-title">Syarat & Ketentuan</h2>
+            <div class="card">
+                <svg class="card-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z" />
+                </svg>
+                <div class="card-text">
+                    Jadwal Start sewa Minggu - Jumat<br>
+                    <strong>Jam 9 Malam - Jam 5 Pagi</strong>
+                </div>
+            </div>
+            <div class="card">
+                <svg class="card-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M5,6H23V18H5V6M14,9A3,3 0 0,1 17,12A3,3 0 0,1 14,15A3,3 0 0,1 11,12A3,3 0 0,1 14,9M9,8A2,2 0 0,1 7,10V14A2,2 0 0,1 9,16H19A2,2 0 0,1 21,14V10A2,2 0 0,1 19,8H9M1,10H3V20H19V22H1V10Z" />
+                </svg>
+                <div class="card-text">
+                    Jadwal Payment Hari Minggu<br>
+                    <span style="opacity: 0.8; font-size: 0.9em;">( Kalau tidak ada keterlambatan )</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h2 class="section-title">Kriteria Account</h2>
+            <div class="card">
+                <svg class="card-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M19,4H18V2H16V4H8V2H6V4H5A2,2 0 0,0 3,6V20A2,2 0 0,0 5,22H19A2,2 0 0,0 21,20V6A2,2 0 0,0 19,4M19,20H5V10H19V20M19,8H5V6H19V8Z" />
+                </svg>
+                <div class="card-text">
+                    Pembuatan Min<br>
+                    <strong>November 2024</strong>
+                </div>
+            </div>
+            <div class="card">
+                <svg class="card-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M16,13C15.71,13 15.38,13.02 15.03,13.05C16.19,13.89 17,15.02 17,16.5V19H23V16.5C23,14.17 18.33,13 16,13M8,13C5.67,13 1,14.17 1,16.5V19H15V16.5C15,14.17 10.33,13 8,13M8,11A3,3 0 0,0 11,8A3,3 0 0,0 8,5A3,3 0 0,0 5,8A3,3 0 0,0 8,11M16,11A3,3 0 0,0 19,8A3,3 0 0,0 16,5A3,3 0 0,0 13,8A3,3 0 0,0 16,11Z" />
+                </svg>
+                <div class="card-text">
+                    Koneksi Minimal<br>
+                    <strong>50 Koneksi</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h2 class="section-title">Detail Payment</h2>
+            <div class="card">
+                <svg class="card-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M13,2.05C18.05,2.55 22,6.82 22,12C22,17.18 18.05,21.45 13,21.95C12.68,21.98 12.34,22 12,22C11.66,22 11.32,21.98 11,21.95C5.95,21.45 2,17.18 2,12C2,6.82 5.95,2.55 11,2.05V2.05H13V2.05M12,4C7.59,4 4,7.59 4,12C4,16.41 7.59,20 12,20C16.41,20 20,16.41 20,12C20,7.59 16.41,4 12,4M12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6Z" />
+                </svg>
+                <div class="card-text">
+                    <strong>$12</strong> untuk akun Normal
+                </div>
+            </div>
+            <div class="card">
+                <svg class="card-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M12,2L15.09,8.26L22,9.27L17,14.14L18.18,21.02L12,17.77L5.82,21.02L7,14.14L2,9.27L8.91,8.26L12,2M12,15.4L15.81,17.41L15.08,13.17L18.16,10.17L13.9,9.55L12,5.69L10.1,9.55L5.84,10.17L8.92,13.17L8.19,17.41L12,15.4Z" />
+                </svg>
+                <div class="card-text">
+                    <strong>$17</strong> untuk akun yang Unrestrict
+                </div>
+            </div>
+            <div class="special-card card">
+                <svg class="card-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="fill: #ffffff;">
+                    <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,11.95L7,12.21L9.12,16.63L12,11.95M12,11.95L14.88,16.63L17,12.21L12,11.95Z" />
+                </svg>
+                <div class="card-text">
+                    New acc kena restric atau baned pas awal sewa tetap dibayar Full $12
+                </div>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h2 class="section-title">Member Get Member</h2>
+            <table class="referral-table">
+                <thead>
+                    <tr>
+                        <th>Jumlah Invite</th>
+                        <th class="amount-col" style="color:#4bb8ff;">Komisi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1 Orang</td>
+                        <td class="amount-col">$2</td>
+                    </tr>
+                    <tr>
+                        <td>2 Orang</td>
+                        <td class="amount-col">$4</td>
+                    </tr>
+                    <tr>
+                        <td>3 Orang</td>
+                        <td class="amount-col">$6</td>
+                    </tr>
+                    <tr>
+                        <td>> 10 Orang</td>
+                        <td class="amount-col rate-high">Rate $3 / invite</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="special-card card" style="border-color: #FFD700; background: rgba(255, 215, 0, 0.1);">
+                 <svg class="card-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="fill: #FFD700;">
+                    <path d="M9.68,13.69L12,11.93L14.32,13.69L13.34,10.89L15.67,9.13H12.78L12,6.28L11.22,9.13H8.33L10.66,10.89L9.68,13.69M12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4Z" />
+                </svg>
+                <div class="card-text">
+                    <strong>Bonus Mingguan</strong><br>
+                    Undang 20 orang/minggu dapat tambahan <span style="color: #FFD700; font-weight:800;">$15</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-logo">ZEN <span>AGENCY</span></div>
+        <div class="copyright">
+            &copy; 2024 Zen Agency. All rights reserved.<br>
+            Authorized Digital Service Partner.
+        </div>
+    </footer>
+
+</body>
+                          </html>
